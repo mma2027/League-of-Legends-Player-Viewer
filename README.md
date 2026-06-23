@@ -27,8 +27,8 @@ A command-line tool that fetches and stores a League of Legends player's complet
 ## Installation
 
 ```bash
-git clone https://github.com/yourusername/match-history.git
-cd match-history
+git clone https://github.com/mma2027/League-of-Legends-Player-Viewer.git
+cd League-of-Legends-Player-Viewer
 
 # Create and activate a virtual environment (recommended)
 python -m venv .venv
