@@ -1,0 +1,9 @@
+.env
+*.db
+*.db-wal
+*.db-shm
+ddragon_*.json
+__pycache__/
+*.pyc
+.venv/
+venv/
