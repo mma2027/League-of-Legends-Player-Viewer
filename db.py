@@ -304,12 +304,14 @@ def insert_participants(match_id: str, participants: list[dict]) -> None:
             json.dumps(_g(p, "missions")) if _g(p, "missions") else None,
         ))
 
+    if not rows:
+        return
+    placeholders = ",".join(["?"] * len(rows[0]))
     with get_connection() as conn:
-        conn.executemany("""
-            INSERT OR IGNORE INTO participants VALUES (
-                ?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?
-            )
-        """, rows)
+        conn.executemany(
+            f"INSERT OR IGNORE INTO participants VALUES ({placeholders})",
+            rows
+        )
 
 
 def insert_timeline(match_id: str, timeline_data: dict) -> None:
